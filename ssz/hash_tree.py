@@ -1,11 +1,13 @@
+# type: ignore
 from functools import partial
 import itertools
 from numbers import Integral
 from typing import Any, Generator, Iterable, Optional, Union
 
-# `transform` comes from a non-public API which is considered stable, but future changes can not be
-# ruled out completely. Therefore, the implementation should be reviewed whenever pyrsistent is
-# updated. See https://github.com/tobgu/pyrsistent/issues/180 for more information.
+# `transform` comes from a non-public API which is considered stable, but future changes
+# can not be ruled out completely. Therefore, the implementation should be reviewed
+# whenever pyrsistent is updated.
+# See https://github.com/tobgu/pyrsistent/issues/180 for more information.
 from eth_typing import Hash32
 from eth_utils.toolz import drop, iterate, partition, pipe, take
 from pyrsistent import pmap, pvector
@@ -37,8 +39,8 @@ def validate_raw_hash_tree(
 
     if chunk_count is not None and len(raw_hash_tree[0]) > chunk_count:
         raise ValueError(
-            f"Hash tree contains {len(raw_hash_tree[0])} chunks which exceeds chunk count "
-            f"{chunk_count}"
+            f"Hash tree contains {len(raw_hash_tree[0])} chunks which exceeds chunk "
+            f"count {chunk_count}"
         )
 
     if len(raw_hash_tree[-1]) != 1:
@@ -367,7 +369,7 @@ def recompute_hash_in_tree(
     except IndexError:
         right_child_hash = ZERO_HASHES[child_layer_index]
 
-    # create the layer if it doesn't exist yet (otherwise, pyrsistent would create a PMap)
+    # create layer if it doesn't exist yet (otherwise, pyrsistent would create a PMap)
     if layer_index == len(hash_tree):
         hash_tree = hash_tree.append(pvector())
 

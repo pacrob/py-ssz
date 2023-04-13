@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Any
 
 from eth_typing import Hash32

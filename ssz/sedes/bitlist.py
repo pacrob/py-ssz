@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Any, Sequence, Tuple, Union
 
 from eth_typing import Hash32
@@ -42,7 +43,7 @@ class Bitlist(BitfieldCompositeSedes[BytesOrByteArray, bytes]):
         len_value = len(value)
         if len_value > self.max_bit_count:
             raise SerializationError(
-                f"Cannot serialize length {len_value} bit array as Bitlist[{self.max_bit_count}]"
+                f"Cannot serialize length {len_value} bit array as Bitlist[{self.max_bit_count}]"  # noqa: E501
             )
 
         serialized_bytearray = get_serialized_bytearray(
@@ -60,7 +61,7 @@ class Bitlist(BitfieldCompositeSedes[BytesOrByteArray, bytes]):
         # Length of data should be larger than 1
         if len(data) < 1:
             raise DeserializationError(
-                f"Cannot deserialize empty bytes string as Bitlist[{self.max_bit_count}] "
+                f"Cannot deserialize empty bytes string as Bitlist[{self.max_bit_count}] "  # noqa: E501
             )
 
         #   Last byte in bytes should be >= 1, if not data is not a serialised bitlist.
@@ -76,7 +77,8 @@ class Bitlist(BitfieldCompositeSedes[BytesOrByteArray, bytes]):
 
         if len_value > self.max_bit_count:
             raise DeserializationError(
-                f"Cannot deserialize length {len_value} bytes data as Bitlist[{self.max_bit_count}]"
+                f"Cannot deserialize length {len_value} bytes data "
+                f"as Bitlist[{self.max_bit_count}]"
             )
 
         for bit_index in range(len_value):

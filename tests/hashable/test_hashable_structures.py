@@ -303,8 +303,8 @@ def test_transform(data, sedes_and_values):
 
         new_value = transformation(original_value)
     else:
-        # bail out if the path does not lead to a atomic value (e.g. if there's an empty list on
-        # the path)
+        # bail out if the path does not lead to a atomic value
+        # (e.g. if there's an empty list on the path)
         assume(False)
 
     transform_set = hashable_value.transform(transform_path, new_value)

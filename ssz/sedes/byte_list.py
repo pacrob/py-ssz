@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Union
 
 from ssz.exceptions import DeserializationError, SerializationError
@@ -23,7 +24,8 @@ class ByteList(List[BytesOrByteArray, bytes]):
     def serialize(self, value: BytesOrByteArray) -> bytes:
         if len(value) > self.max_length:
             raise SerializationError(
-                f"Cannot serialize length {len(value)} byte-string as ByteList{self.length}"
+                f"Cannot serialize length {len(value)} byte-string as "
+                f"ByteList{self.length}"
             )
 
         return value

@@ -1,3 +1,4 @@
+# type: ignore
 from collections.abc import Mapping
 from typing import Sequence
 

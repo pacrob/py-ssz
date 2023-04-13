@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Any, Sequence, Tuple, Union
 
 from eth_typing import Hash32
@@ -38,7 +39,8 @@ class Bitvector(BitfieldCompositeSedes[BytesOrByteArray, bytes]):
     def serialize(self, value: Sequence[bool]) -> bytes:
         if len(value) != self.bit_count:
             raise SerializationError(
-                f"Cannot serialize length {len(value)} bit array as Bitvector[{self.bit_count}]"
+                f"Cannot serialize length {len(value)} bit array "
+                f"as Bitvector[{self.bit_count}]"
             )
         return bytes(get_serialized_bytearray(value, self.bit_count, extra_byte=False))
 
@@ -49,7 +51,8 @@ class Bitvector(BitfieldCompositeSedes[BytesOrByteArray, bytes]):
     def deserialize(self, data: bytes) -> bytes:
         if len(data) > (self.bit_count + 7) // 8:
             raise DeserializationError(
-                f"Cannot deserialize length {len(data)} bytes data as Bitvector[{self.bit_count}]"
+                f"Cannot deserialize length {len(data)} bytes data "
+                f"as Bitvector[{self.bit_count}]"
             )
 
         for bit_index in range(self.bit_count):

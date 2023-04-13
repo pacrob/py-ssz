@@ -1,3 +1,4 @@
+# type: ignore
 from typing import TYPE_CHECKING, Iterable, Sequence, TypeVar
 
 from eth_typing import Hash32

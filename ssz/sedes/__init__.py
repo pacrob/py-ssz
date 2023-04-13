@@ -1,3 +1,4 @@
+#  type: ignore
 from collections.abc import Iterable
 
 from ssz.abc import HashableStructureAPI

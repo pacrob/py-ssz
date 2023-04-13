@@ -1,3 +1,4 @@
+# type: ignore
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Iterable, Iterator, Optional, TypeVar, Union
 

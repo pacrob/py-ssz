@@ -1,3 +1,4 @@
+# type: ignore
 from eth_utils import decode_hex, encode_hex
 
 

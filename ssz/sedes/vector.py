@@ -1,3 +1,4 @@
+# type: ignore
 from typing import IO, Any, Iterable, Sequence, Tuple
 
 from eth_typing import Hash32
@@ -92,7 +93,8 @@ class Vector(
                 element_data = read_exact(element_length, stream)
                 yield self.element_sedes.deserialize(element_data)
 
-            # simply reading to the end of the current stream gives us all of the final element data
+            # simply reading to the end of the current stream
+            # gives us all of the final element data
             final_element_data = stream.read()
             yield self.element_sedes.deserialize(final_element_data)
 

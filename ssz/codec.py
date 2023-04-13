@@ -1,3 +1,4 @@
+#  type: ignore
 from eth_utils import is_bytes
 
 from ssz.sedes import infer_sedes, sedes_by_name

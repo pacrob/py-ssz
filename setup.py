@@ -8,10 +8,9 @@ extras_require = {
         "pytest-xdist>=2.4.0,<3",
         "tox==3.14.6",
         "hypothesis==4.54.0",
-        "mypy-extensions>=0.4.1,<1.0.0",
     ],
     "yaml": [
-        "ruamel.yaml==0.15.87",
+        "ruamel.yaml>=0.17.0",
     ],
     "lint": [
         "black>=22.6.0,<23",
@@ -60,7 +59,7 @@ setup(
     url="https://github.com/ethereum/py-ssz",
     include_package_data=True,
     install_requires=[
-        "eth-utils>=1,<2",
+        "eth-utils>=2",
         "lru-dict>=1.1.6",
         # When updating to a newer version of pyrsistent, please check that the interface
         # `transform` expects has not changed (see https://github.com/tobgu/pyrsistent/issues/180)

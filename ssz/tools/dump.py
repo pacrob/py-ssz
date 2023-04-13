@@ -1,3 +1,4 @@
+#  type: ignore
 from typing import Sequence
 
 from eth_utils import to_tuple

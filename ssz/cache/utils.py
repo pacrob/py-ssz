@@ -1,3 +1,4 @@
+# type: ignore
 import functools
 from typing import Any, Iterable
 

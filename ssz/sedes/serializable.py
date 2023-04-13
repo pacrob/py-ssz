@@ -1,3 +1,4 @@
+# type: ignore
 import abc
 import collections.abc
 import copy
@@ -129,9 +130,9 @@ class BaseSerializable(collections.abc.Sequence):
     def __getstate__(self):
         state = self.__dict__.copy()
         # The hash() builtin is not stable across processes
-        # (https://docs.python.org/3/reference/datamodel.html#object.__hash__), so we do this here
-        # to ensure pickled instances don't carry the cached hash() as that may cause issues like
-        # https://github.com/ethereum/py-evm/issues/1318
+        # (https://docs.python.org/3/reference/datamodel.html#object.__hash__),
+        # so we do this here to ensure pickled instances don't carry the cached hash()
+        # as that may cause issues like https://github.com/ethereum/py-evm/issues/1318
         state["_hash_cache"] = None
         return state
 
@@ -288,8 +289,8 @@ class MetaSerializable(abc.ABCMeta):
             try:
                 sedes = Container(field_sedes)
             except ValidationError as exception:
-                # catch empty or duplicate fields and reraise as a TypeError as this would be an
-                # invalid class definition
+                # catch empty or duplicate fields and reraise as a TypeError
+                # as this would be an invalid class definition
                 raise TypeError(str(exception)) from exception
 
         else:
@@ -310,12 +311,12 @@ class MetaSerializable(abc.ABCMeta):
                 sedes = bases_with_fields[0]._meta.container_sedes
             else:
                 raise TypeError(
-                    "Fields need to be declared explicitly as class has multiple `Serializable` "
-                    "parents with fields themselves"
+                    "Fields need to be declared explicitly as class has multiple "
+                    "`Serializable` parents with fields themselves"
                 )
 
-        # create the class without any fields as neither the class itself nor any of its ancestors
-        # have defined fields
+        # create the class without any fields as neither the class itself nor any of
+        # its ancestors have defined fields
         if not has_fields:
             meta = Meta(
                 has_fields=False,

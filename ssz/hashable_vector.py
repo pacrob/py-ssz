@@ -1,3 +1,4 @@
+# type: ignore
 from typing import TYPE_CHECKING, Iterable, Sequence, TypeVar
 
 from eth_typing import Hash32
@@ -19,7 +20,7 @@ class HashableVector(BaseHashableStructure[TElement], Sequence[TElement]):
         elements = pvector(iterable)
         if len(elements) != sedes.length:
             raise ValueError(
-                f"Vector has length {sedes.length}, but {len(elements)} elements are given"
+                f"Vector has length {sedes.length}, but {len(elements)} elements are given"  # noqa: E501
             )
         return super().from_iterable_and_sedes(elements, sedes, max_length=None)
 

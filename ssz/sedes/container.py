@@ -1,3 +1,4 @@
+# type: ignore
 from typing import IO, Any, Iterable, Sequence, Tuple
 
 from eth_typing import Hash32
@@ -59,7 +60,7 @@ class Container(ProperCompositeSedes[Sequence[Any], Tuple[Any, ...]]):
     def _validate_serializable(self, value: Sequence[Any]) -> None:
         if len(value) != len(self.field_sedes):
             raise SerializationError(
-                f"Incorrect element count: Expected: {len(self.field_sedes)} / Got: {len(value)}"
+                f"Incorrect element count: Expected: {len(self.field_sedes)} / Got: {len(value)}"  # noqa: E501
             )
 
     #
@@ -95,7 +96,8 @@ class Container(ProperCompositeSedes[Sequence[Any], Tuple[Any, ...]]):
             field_data = read_exact(field_length, stream)
             yield sedes.deserialize(field_data)
 
-        # simply reading to the end of the current stream gives us all of the final element data
+        # simply reading to the end of the current stream
+        # gives us all of the final element data
         final_field_data = stream.read()
         yield last_field.deserialize(final_field_data)
 

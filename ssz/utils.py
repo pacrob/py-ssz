@@ -1,3 +1,4 @@
+# type: ignore
 import collections
 import functools
 from typing import IO, Any, Sequence, Tuple
@@ -53,7 +54,8 @@ def get_items_per_chunk(item_size: int) -> int:
 def pad_zeros(value: bytes) -> bytes:
     if len(value) >= CHUNK_SIZE:
         raise ValueError(
-            f"The length of given value {len(value)} should be less than CHUNK_SIZE ({CHUNK_SIZE})"
+            f"The length of given value {len(value)} "
+            f"should be less than CHUNK_SIZE ({CHUNK_SIZE})"
         )
     return value.ljust(CHUNK_SIZE, b"\x00")
 

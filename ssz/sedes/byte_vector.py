@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Tuple, Union
 
 from eth_typing import Hash32
@@ -20,7 +21,8 @@ class ByteVector(Vector[BytesOrByteArray, bytes]):
     def serialize(self, value: BytesOrByteArray) -> bytes:
         if len(value) != self.length:
             raise SerializationError(
-                f"Cannot serialize length {len(value)} byte-string as bytes{self.length}"
+                f"Cannot serialize length {len(value)} byte-string "
+                f"as bytes{self.length}"
             )
 
         return value

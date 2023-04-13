@@ -1,7 +1,7 @@
 from eth_typing import Hash32
 from eth_utils.toolz import iterate, take
 
-from ssz.hash import hash_eth2
+from .hash import hash_eth2  # type: ignore
 
 CHUNK_SIZE = 32  # named BYTES_PER_CHUNK in the spec
 EMPTY_CHUNK = Hash32(b"\x00" * CHUNK_SIZE)

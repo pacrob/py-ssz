@@ -1,3 +1,4 @@
+# type: ignore
 from typing import Any
 
 from ssz.exceptions import DeserializationError, SerializationError
